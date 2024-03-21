@@ -1,3 +1,53 @@
 // Copyright 2021 Manna Harbour
 // https://github.com/manna-harbour/miryoku
 
+#define MIRYOKU_NAV_VI
+#define MIRYOKU_CLIPBOARD_MAC
+#define MIRYOKU_KLUDGE_MOUSEKEYSPR
+
+#define MIRYOKU_LAYER_LIST \
+MIRYOKU_X(BASE,   "Base") \
+MIRYOKU_X(EXTRA,  "Extra") \
+MIRYOKU_X(TAP,    "Tap") \
+MIRYOKU_X(BUTTON, "Button") \
+MIRYOKU_X(NAV,    "Nav") \
+MIRYOKU_X(MOUSE,  "Mouse") \
+MIRYOKU_X(MEDIA,  "Media") \
+MIRYOKU_X(NUM,    "Num") \
+MIRYOKU_X(SYM,    "Sym") \
+MIRYOKU_X(FUN,    "Fun") \
+MIRYOKU_X(SEN,    "Sen")
+
+#define U_BASE   0
+#define U_EXTRA  1
+#define U_TAP    2
+#define U_BUTTON 3
+#define U_NAV    4
+#define U_MOUSE  5
+#define U_MEDIA  6
+#define U_NUM    7
+#define U_SYM    8
+#define U_FUN    9
+#define U_SEN    10
+
+#define MIRYOKU_LAYERMAPPING_SEN MIRYOKU_MAPPING
+
+#define AS(keycode) &as keycode
+
+#define MIRYOKU_LAYER_MOUSE \
+U_BOOT,            &u_to_U_TAP,       &u_to_U_EXTRA,     &u_to_U_BASE,      U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,             \
+&kp LCTL,          &kp LALT,          &kp LGUI,         &kp LSHFT,         U_NA,              U_MS_L,            U_MS_D,            U_MS_U,            U_MS_R,            &kp ESC,              \
+U_NA,              &kp RALT,          &u_to_U_SYM,       &u_to_U_MOUSE,     U_NA,              U_WH_L,            U_WH_D,            U_WH_U,            U_WH_R,            U_NU,              \
+U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              U_BTN2,            U_BTN1,            U_BTN3,            U_NP,              U_NP
+
+#define MIRYOKU_LAYER_BASE \
+&kp W,             &kp L,             &kp Y,             &kp P,             &kp B,             &kp Z,             &kp F,             &kp O,             &kp U,             AS(SQT),           \
+U_MT(LCTL, C),     U_MT(LALT, R),     U_MT(LGUI, S),    U_MT(LSHFT, T),    &kp G,             &kp M,             U_MT(LSHFT, N),    U_MT(LGUI, E),    U_MT(LALT, I),     U_MT(LCTL, A),     \
+U_LT(U_BUTTON, Q), U_MT(RALT, J),     &kp V,             &kp D,             &kp K,             &kp X,             &kp H,             &kp SLASH,         U_MT(RALT, COMMA),   &st_dot,\
+U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
+
+#define MIRYOKU_LAYER_SEN \
+&trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans, \
+&trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans, \
+&trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans,            &trans, \
+U_NP,              U_NP,              U_NP,              &st_space,           &trans,            &trans,            &trans,            U_NP,              U_NP,              U_NP

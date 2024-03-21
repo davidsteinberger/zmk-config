@@ -4,3 +4,196 @@
 #include "../miryoku/custom_config.h"
 #include "../miryoku/mapping/34/ferris.h"
 #include "../miryoku/miryoku.dtsi"
+
+#include "../zmk-nodefree-config/helper.h"
+#include "../zmk-nodefree-config/keypos_def/keypos_34keys.h"
+
+#undef COMBO_TERM
+#define COMBO_TERM 50
+
+ZMK_BEHAVIOR(st_dot, macro,
+    bindings = <&kp DOT &sl U_SEN>;
+)
+ZMK_BEHAVIOR(st_space, macro,
+  bindings = <&lt U_NAV SPACE &sk LSHFT>;
+)
+ZMK_BEHAVIOR(shifted, macro_one_param,
+  bindings =
+    <&macro_press &kp LSHFT>,
+    <&macro_param_1to1 &macro_tap &kp MACRO_PLACEHOLDER>,
+    <&macro_release &kp LSHFT>;
+)
+ZMK_BEHAVIOR(as_ht, hold_tap,
+  tapping-term-ms = <135>;
+  quick-tap-ms = <0>;
+  flavor = "tap-preferred";
+  bindings = <&shifted>, <&kp>;
+)
+ZMK_BEHAVIOR(as, macro_one_param,
+  bindings =
+      <&macro_press>,
+      <&macro_param_1to1>,
+      <&macro_param_1to2>,
+      <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
+      <&macro_pause_for_release>,
+      <&macro_release>,
+      <&macro_param_1to1>,
+      <&macro_param_1to2>,
+      <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+)
+ZMK_BEHAVIOR(tripple_grave, macro,
+  bindings = 
+    <&macro_release &kp LSHFT>,
+    <&macro_tap &kp GRAVE &kp GRAVE &kp GRAVE>;
+)
+ZMK_BEHAVIOR(tg, mod_morph,
+  bindings = <&kp GRAVE>, <&tripple_grave>;
+  mods = <(MOD_LSFT)>;
+)
+
+ZMK_COMBO(esc,  &kp ESC, LB3 LB2, ALL, 100)
+ZMK_COMBO(esc2,  &kp ESC, 31 RM4, ALL, 100)
+ZMK_COMBO(ip,  &ip, 30 LT1 RM3, ALL, 100)
+ZMK_BEHAVIOR(ip, macro,
+    bindings = <&sk LSHFT &kp D &kp A &kp V &kp I &kp D &kp SPACE &sk LSHFT &kp S &kp T &kp E &kp I &kp N &kp B &kp E &kp R &kp G &kp E &kp R>;
+)
+ZMK_COMBO(ep,  &ep, 30 LT1 RM2, ALL, 100)
+ZMK_BEHAVIOR(ep, macro,
+    bindings = <&kp M &kp A &kp I &kp L &kp DOT &kp S &kp T &kp E &kp I &kp N &kp B &kp E &kp R &kp G &kp E &kp R &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+)
+ZMK_COMBO(iw,  &iw, 30 LT4 RM3, ALL, 100)
+ZMK_BEHAVIOR(iw, macro,
+    bindings = <&kp KP_N1 &kp KP_N0 &kp KP_N5 &kp KP_N0 &kp KP_N4 &kp KP_N2 &kp KP_N6 &kp KP_N9 &kp KP_N7>;
+)
+ZMK_COMBO(ew,  &ew, 30 LT4 RM2, ALL, 100)
+ZMK_BEHAVIOR(ew, macro,
+    bindings = < &kp D &kp A &kp V &kp I &kp D &kp DOT &kp S &kp T &kp E &kp I &kp N &kp B &kp E &kp R &kp G &kp E &kp R &kp AT &kp I &kp N &kp N &kp I &kp O &kp DOT &kp C &kp O &kp M>;
+)
+
+ZMK_COMBO(grave, &tg, RB0 RB1, ALL)
+ZMK_COMBO(minus, &kp MINUS, RB1 RB2, ALL)
+ZMK_COMBO(equal, &kp EQUAL, RB2 RB3, ALL)
+ZMK_COMBO(lt, &kp LT, RB1 RB3, ALL)
+ZMK_COMBO(gt, &kp GT, RB1 RB4, ALL)
+ZMK_COMBO(updir, &updir, RB1 RB2 RB3, ALL)
+ZMK_BEHAVIOR(updir, macro,
+    bindings = <&kp DOT &kp DOT &kp SLASH>;
+)
+ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, ALL, 100)
+// Alt+Tab swapper, requires PR #1366
+ZMK_BEHAVIOR(swapper, tri_state,
+    bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+    timeout-ms = <500>;
+    ignored-key-positions = <LB1 LB2 LB3 LM1 RM1>;
+)
+
+ZMK_COMBO(every, &every, 30 RM2 LB2, ALL)
+ZMK_BEHAVIOR(every, macro,
+    bindings = <&kp E &kp V &kp E &kp R &kp Y>;
+)
+//const uint16_t PROGMEM bspc_you[]      = {LT(U_NAV, KC_SPC), KC_D, KC_U, COMBO_END};
+ZMK_COMBO(you, &you, 30 LB1 RT3, ALL)
+ZMK_BEHAVIOR(you, macro,
+    bindings = <&kp Y &kp O &kp U>;
+)
+//const uint16_t PROGMEM bspc_and[]      = {LT(U_NAV, KC_SPC), KC_D, LCTL_T(KC_A), COMBO_END};
+ZMK_COMBO(and, &and, 30 LB1 RM4, ALL)
+ZMK_BEHAVIOR(and, macro,
+    bindings = <&kp A &kp N &kp D>;
+)
+//const uint16_t PROGMEM bspcf_for[]     = {LT(U_NAV, KC_SPC), KC_D, KC_F, COMBO_END};
+ZMK_COMBO(for, &for, 30 LB1 RT1, ALL)
+ZMK_BEHAVIOR(for, macro,
+    bindings = <&kp F &kp O &kp R>;
+)
+//const uint16_t PROGMEM bspch_here[]    = {LT(U_NUM, KC_BSPC), KC_H, COMBO_END};
+ZMK_COMBO(here, &here, 33 RB1, ALL)
+ZMK_BEHAVIOR(here, macro,
+    bindings = <&kp H &kp E &kp R &kp E>;
+)
+//const uint16_t PROGMEM bspct_the[]     = {LT(U_NUM, KC_BSPC), KC_H, LSFT_T(KC_T), COMBO_END};
+ZMK_COMBO(the, &the, 33 RB1 LM1, ALL)
+ZMK_BEHAVIOR(the, macro,
+    bindings = <&kp T &kp H &kp E>;
+)
+//const uint16_t PROGMEM bspcm_ment[]    = {LT(U_NUM, KC_BSPC), KC_M, COMBO_END};
+ZMK_COMBO(ment, &ment, 33 RM0, ALL)
+ZMK_BEHAVIOR(ment, macro,
+    bindings = <&kp M &kp E &kp N &kp T>;
+)
+//const uint16_t PROGMEM bspcg_ing[]     = {LT(U_NUM, KC_BSPC), KC_H, KC_G, COMBO_END};
+ZMK_COMBO(ing, &ing, 33 RB1 LM0, ALL)
+ZMK_BEHAVIOR(ing, macro,
+    bindings = <&kp I &kp N &kp G>;
+)
+//const uint16_t PROGMEM bspco_ough[]    = {LT(U_NAV, KC_SPC), KC_D, KC_O, COMBO_END};
+ZMK_COMBO(ough, &ough, 30 LB1 RT2, ALL)
+ZMK_BEHAVIOR(ough, macro,
+    bindings = <&kp O &kp U &kp G &kp H>;
+)
+//const uint16_t PROGMEM bspcol_ould[]   = {LT(U_NAV, KC_SPC), KC_O, KC_L, COMBO_END};
+ZMK_COMBO(ould, &ould, 30 LT3 RT2, ALL)
+ZMK_BEHAVIOR(ould, macro,
+    bindings = <&kp O &kp U &kp L &kp D>;
+)
+//const uint16_t PROGMEM bspci_ion[]     = {LT(U_NAV, KC_SPC), KC_D, LALT_T(KC_I), COMBO_END};
+ZMK_COMBO(ion, &ion, 30 LB1 RM3, ALL)
+ZMK_BEHAVIOR(ion, macro,
+    bindings = <&kp I &kp O &kp N>;
+)
+//const uint16_t PROGMEM bspcis_ions[]   = {LT(U_NAV, KC_SPC), KC_D, LALT_T(KC_I), LGUI_T(KC_S), COMBO_END};
+ZMK_COMBO(ions, &ions, 30 LB1 LM2 RM3, ALL)
+ZMK_BEHAVIOR(ions, macro,
+    bindings = <&kp I &kp O &kp N &kp S>;
+)
+//const uint16_t PROGMEM bspcta_that[]   = {LT(U_NUM, KC_BSPC), LSFT_T(KC_T), LCTL_T(KC_A), COMBO_END};
+ZMK_COMBO(that, &that, 33 LM1 RM4, ALL)
+ZMK_BEHAVIOR(that, macro,
+    bindings = <&kp T &kp H &kp A &kp T>;
+)
+//const uint16_t PROGMEM bspcq_que[]     = {LT(U_NUM, KC_BSPC), LT(U_BUTTON, KC_Q), KC_H, COMBO_END};
+ZMK_COMBO(que, &que, 33 LB4 RB1, ALL)
+ZMK_BEHAVIOR(que, macro,
+    bindings = <&kp Q &kp U &kp E>;
+)
+//const uint16_t PROGMEM bspci_key[]     = {LT(U_NUM, KC_BSPC), KC_H, KC_K, COMBO_END};
+ZMK_COMBO(key, &key, 33 RB1 LB0, ALL)
+ZMK_BEHAVIOR(key, macro,
+    bindings = <&kp K &kp E &kp Y>;
+)
+//const uint16_t PROGMEM bspcts_this[]   = {LT(U_NUM, KC_BSPC), KC_H, LSFT_T(KC_T), LGUI_T(KC_S), COMBO_END};
+ZMK_COMBO(this, &this, 33 RB1 LM1 LM2, ALL)
+ZMK_BEHAVIOR(this, macro,
+    bindings = <&kp T &kp H &kp I &kp S>;
+)
+//const uint16_t PROGMEM bspcdn_dont[]   = {LT(U_NUM, KC_BSPC), KC_D, LSFT_T(KC_N), COMBO_END};
+ZMK_COMBO(dont, &dont, 33 LB1 RM1, ALL)
+ZMK_BEHAVIOR(dont, macro,
+    bindings = <&kp D &kp O &kp N &kp SQT &kp T>;
+)
+//const uint16_t PROGMEM bspcit_in_the[] = {LT(U_NUM, KC_BSPC), LALT_T(KC_I), LSFT_T(KC_T), COMBO_END};
+ZMK_COMBO(in_the, &in_the, 33 RM3 LM1, ALL)
+ZMK_BEHAVIOR(in_the, macro,
+    bindings = <&kp I &kp N &kp SPACE &kp T &kp H &kp E>;
+)
+//const uint16_t PROGMEM hv_have[]       = {KC_H, KC_V, COMBO_END};
+ZMK_COMBO(hv, &hv, RB1 LB2, ALL)
+ZMK_BEHAVIOR(hv, macro,
+    bindings = <&kp H &kp A &kp V &kp E>;
+)
+//const uint16_t PROGMEM qk_qmk[]        = {LT(U_BUTTON, KC_Q), KC_K, COMBO_END};
+ZMK_COMBO(qmk, &qmk, LB4 LB0, ALL)
+ZMK_BEHAVIOR(qmk, macro,
+    bindings = <&kp Q &kp M &kp K>;
+)
+//const uint16_t PROGMEM kb_keyboard[]   = {KC_K, KC_B, COMBO_END};
+ZMK_COMBO(keyboard, &keyboard, LB0 LT0, ALL)
+ZMK_BEHAVIOR(keyboard, macro,
+    bindings = <&kp K &kp E &kp Y &kp B &kp O &kp A &kp R &kp D>;
+)
+//const uint16_t PROGMEM wa_what[]       = {KC_W, LSFT_T(KC_T), LCTL_T(KC_A), COMBO_END};
+ZMK_COMBO(what, &what, LT4 LM1 RM4, ALL)
+ZMK_BEHAVIOR(what, macro,
+    bindings = <&kp W &kp H &kp A &kp T>;
+)
+
