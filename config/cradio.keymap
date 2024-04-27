@@ -11,12 +11,19 @@
 #undef COMBO_TERM
 #define COMBO_TERM 50
 
-ZMK_BEHAVIOR(st_dot, macro,
+ZMK_BEHAVIOR(sc_dot, macro,
     bindings = <&kp DOT &sl U_SEN>;
 )
-ZMK_BEHAVIOR(st_space, macro,
-  bindings = <&lt U_NAV SPACE &sk LSHFT>;
+ZMK_BEHAVIOR(sc_space_shift, macro,
+  bindings = <&kp SPACE &sk LSHFT>;
 )
+ZMK_BEHAVIOR(sc_mo_space_shift, hold_tap,
+  tapping-term-ms = <135>;
+  quick-tap-ms = <0>;
+  flavor = "tap-preferred";
+  bindings = <&mo>, <&sc_space_shift>;
+)
+
 ZMK_BEHAVIOR(shifted, macro_one_param,
   bindings =
     <&macro_press &kp LSHFT>,
