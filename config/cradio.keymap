@@ -13,7 +13,7 @@
 
 ZMK_BEHAVIOR(skq, sticky_key,
   bindings = <&kp>;
-  release-after-ms = <100>;
+  release-after-ms = <200>;
   quick-release;
   ignore-modifiers;
 )
