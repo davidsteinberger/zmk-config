@@ -5,6 +5,8 @@
 
 #define XXX &none
 
+#define AS(keycode) &as keycode
+
 #define MIRYOKU_LAYOUTMAPPING_GLOVE80( \
      K00, K01, K02, K03, K04,                                    K05, K06, K07, K08, K09, \
      K10, K11, K12, K13, K14,                                    K15, K16, K17, K18, K19, \
@@ -15,8 +17,8 @@
 &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                                     &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp BSPC \
 &kp TAB  K00  K01  K02  K03  K04                                     K05  K06  K07  K08  K09  &kp BSLH \
 &kp ESC  K10  K11  K12  K13  K14                                     K15  K16  K17  K18  K19  &kp RET \
-&kp LSHFT  K20  K21  K22  K23  K24  &kp LSHFT  &kp LGUI  &kp LCTRL       &kp RCTRL  &kp RGUI  &kp RSHFT  K25  K26  K27  K28  K29  &kp RSHFT \
-&kp UP  &kp DOWN  &kp LT  &kp LPAR  &kp LBKT       K33  K34  K32       K37  K35  K36       &kp RBKT  &kp RPAR  &kp GT  &kp LEFT  &kp RIGHT
+&kp LSHFT  K20  K21  K22  K23  K24  &kp LSHFT  &kp LGUI  &kp LALT       &kp RALT  &kp RGUI  &kp RSHFT  K25  K26  K27  K28  K29  &kp RSHFT \
+&kp UP  &kp DOWN  &kp LT  &kp LPAR  AS(LBKT)       K33  K34  K32       K37  K35  K36       AS(RBKT)  &kp RPAR  &kp GT  &kp LEFT  &kp RIGHT
 
 #endif
 
