@@ -70,6 +70,7 @@ ZMK_BEHAVIOR(tg, mod_morph,
   mods = <(MOD_LSFT)>;
 )
 
+ZMK_COMBO(sen, &sc_dot, RH2 RB4, U_BASE)
 ZMK_COMBO(enter, &kp ENTER, LM1 LM2 LM3, U_BASE)
 ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE)
 ZMK_COMBO(esc2,  &kp ESC, LH1 RM4, U_BASE)

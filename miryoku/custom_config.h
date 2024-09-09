@@ -45,7 +45,7 @@ U_NP,              U_NP,              U_NA,              U_NA,              U_NA
 #define MIRYOKU_LAYER_BASE \
 &kp W,             &kp L,             &kp Y,             &kp P,             &kp B,             &kp Z,             &kp F,             &kp O,             &kp U,             AS(SQT),     \
 U_MT(LCTL, C),     U_MT(LALT, R),     U_MT(LGUI, S),    U_MT(LSHFT, T),    &kp G,             &kp M,             U_MT(LSHFT, N),    U_MT(LGUI, E),    U_MT(LALT, I),     U_MT(LCTL, A), \
-U_LT(U_BUTTON, Q), U_MT(RALT, J),     &kp V,             &kp D,             &kp K,             &kp X,             &kp H,             &kp SLASH,         U_MT(RALT, COMMA),   &sc_dot,   \
+U_LT(U_BUTTON, Q), U_MT(RALT, J),     &kp V,             &kp D,             &kp K,             &kp X,             &kp H,             &kp SLASH,         U_MT(RALT, COMMA),   U_LT(U_BUTTON, DOT),   \
 U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
 
 #define MIRYOKU_LAYER_SEN \
