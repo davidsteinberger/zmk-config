@@ -35,6 +35,7 @@ MIRYOKU_X(SEN,    "Sen")
 
 #define AS(keycode) &as keycode
 #define SC_SPACE_SHIFT &sc_mo_space_shift U_NAV 0
+#define RALT_MINUS_DQT &ht_minus_dqt RALT 0
 
 #define MIRYOKU_LAYER_MOUSE \
 U_BOOT,            &u_to_U_TAP,       &u_to_U_EXTRA,     &u_to_U_BASE,      U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,  \
@@ -43,6 +44,12 @@ U_NA,              &kp RALT,          &u_to_U_SYM,       &u_to_U_MOUSE,     U_NA
 U_NP,              U_NP,              U_NA,              U_NA,              U_NA,              U_BTN2,            U_BTN1,            U_BTN3,            U_NP,              U_NP
 
 #define MIRYOKU_LAYER_BASE \
+&kp B,             &kp L,             &kp D,             &kp W,             &kp Z,             &apos_under,             &kp F,             &kp O,             &kp U,             &kp J,     \
+U_MT(LCTL, N),     U_MT(LALT, R),     U_MT(LGUI, T),    U_MT(LSHFT, S),    &kp G,             &kp Y,             U_MT(LSHFT, H),    U_MT(LGUI, A),    U_MT(LALT, E),     U_MT(LCTL, I), \
+U_LT(U_BUTTON, Q), U_MT(RALT, X),     &kp M,             &kp C,             &kp V,             &kp K,             &kp P,             &dot_gt,         RALT_MINUS_DQT,   &slash_lt ,   \
+U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
+
+#define MIRYOKU_LAYER_EXTRA \
 &kp W,             &kp L,             &kp Y,             &kp P,             &kp B,             &kp Z,             &kp F,             &kp O,             &kp U,             AS(SQT),     \
 U_MT(LCTL, C),     U_MT(LALT, R),     U_MT(LGUI, S),    U_MT(LSHFT, T),    &kp G,             &kp M,             U_MT(LSHFT, N),    U_MT(LGUI, E),    U_MT(LALT, I),     U_MT(LCTL, A), \
 U_LT(U_BUTTON, Q), U_MT(RALT, J),     &kp V,             &kp D,             &kp K,             &kp X,             &kp H,             &kp SLASH,         U_MT(RALT, COMMA),   U_LT(U_BUTTON, DOT),   \
