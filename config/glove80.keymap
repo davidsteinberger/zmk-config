@@ -10,8 +10,3 @@
 
 #include "./base.keymap"
 
-// workaround for shifted rgb functions not working in zmk
-// see https://github.com/manna-harbour/miryoku_zmk?tab=readme-ov-file#global-shift-functions
-ZMK_COMBO(rgb_brd, &rgb_ug RGB_BRD, LM1 RT3, U_MEDIA)
-ZMK_COMBO(rgb_sai, &rgb_ug RGB_SAD, LM1 RT2, U_MEDIA)
-

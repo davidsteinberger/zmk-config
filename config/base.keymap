@@ -122,6 +122,10 @@ ZMK_BEHAVIOR(ew, macro,
     bindings = < &kp D &kp A &kp V &kp I &kp D &kp DOT &kp S &kp T &kp E &kp I &kp N &kp B &kp E &kp R &kp G &kp E &kp R &kp AT &kp I &kp N &kp N &kp I &kp O &kp DOT &kp C &kp O &kp M>;
 )
 
+ZMK_BEHAVIOR(tmux, macro,
+    bindings = <&sk RCTRL &kp SPACE>;
+)
+
 ZMK_BEHAVIOR(every, macro,
     bindings = <&kp E &kp V &kp E &kp R &kp Y>;
 )
