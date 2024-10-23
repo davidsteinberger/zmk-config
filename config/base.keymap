@@ -44,11 +44,11 @@ ZMK_BEHAVIOR(skq, sticky_key,
 )
 
 ZMK_BEHAVIOR(sc_dot, macro,
-    bindings = <&kp DOT &sl U_SEN>;
+    bindings = <&dot_gt &sl U_SEN>;
 )
 
 ZMK_BEHAVIOR(sc_space_shift, macro,
-  bindings = <&kp SPACE &skq LSHFT>;
+  bindings = <&kp SPACE &sk LSHFT>;
 )
 
 ZMK_BEHAVIOR(sc_mo_space_shift, hold_tap,
@@ -124,6 +124,12 @@ ZMK_BEHAVIOR(ew, macro,
 
 ZMK_BEHAVIOR(tmux, macro,
     bindings = <&sk RCTRL &kp SPACE>;
+)
+
+ZMK_BEHAVIOR(ctrlalt, macro,
+    bindings = <&macro_press &kp LCTRL &kp LALT>
+    , <&macro_pause_for_release>
+    , <&macro_release &kp LCTRL &kp LALT>;
 )
 
 ZMK_BEHAVIOR(every, macro,
@@ -212,54 +218,21 @@ ZMK_BEHAVIOR(what, macro,
 
 // all layers
 ZMK_COMBO(enter, &kp ENTER, LM1 LM2 LM3, U_BASE U_EXTRA)
-ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_EXTRA)
-ZMK_COMBO(esc2,  &kp ESC, LH1 RM4, U_BASE U_EXTRA)
+ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_EXTRA U_SEN)
+//ZMK_COMBO(esc2,  &kp ESC, LH1 RM4, U_BASE U_EXTRA)
 ZMK_COMBO(grave, &tg, RB0 RB1, U_BASE U_EXTRA)
-ZMK_COMBO(minus, &kp MINUS, RB1 RB2, U_EXTRA)
 ZMK_COMBO(equal, &kp EQUAL, RB2 RB3, U_BASE U_EXTRA)
-ZMK_COMBO(lt, &kp LT, RB1 RB3, U_BASE U_EXTRA)
-ZMK_COMBO(gt, &kp GT, RB1 RB4, U_BASE U_EXTRA)
+ZMK_COMBO(gt, &kp GT, RB1 RB3, U_BASE U_EXTRA)
+ZMK_COMBO(lt, &kp LT, RB1 RB4, U_BASE U_EXTRA)
 ZMK_COMBO(updir, &updir, RB1 RB2 RB3, U_BASE U_EXTRA)
 ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_EXTRA)
 
 // base layer
 ZMK_COMBO(cv_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
 ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE)
-ZMK_COMBO(ip1,  &ip, LH2 LT2 RM4, U_BASE)
-ZMK_COMBO(ep1,  &ep, LH2 LT2 RM3, U_BASE)
-ZMK_COMBO(iw1,  &iw, LH2 LT1 RM4, U_BASE)
-ZMK_COMBO(ew1,  &ew, LH2 LT1 RM3, U_BASE)
-ZMK_COMBO(i1,   &i, RH2 RM4, U_BASE)
-ZMK_COMBO(sen1, &sc_dot, RH2 RB2, U_BASE)
-
-// extra layer
-ZMK_COMBO(sen, &sc_dot, RH2 RB4, U_EXTRA)
-
-ZMK_COMBO(ip2, &ip, LH2 LT1 RM3, U_EXTRA)
-ZMK_COMBO(ep2, &ep, LH2 LT1 RM2, U_EXTRA)
-ZMK_COMBO(iw2, &iw, LH2 LT4 RM3, U_EXTRA)
-ZMK_COMBO(ew2, &ew, LH2 LT4 RM2, U_EXTRA)
-ZMK_COMBO(i2,  &i, LH2 LB1 RM3, U_EXTRA)
-
-ZMK_COMBO(semi, &as SEMI, RB3 RB4, U_EXTRA)
-ZMK_COMBO(every, &every, LH2 RM2 LB2, U_EXTRA)
-ZMK_COMBO(you, &you, LH2 LB1 RT3, U_EXTRA)
-ZMK_COMBO(and, &and, LH2 LB1 RM4, U_EXTRA)
-ZMK_COMBO(for, &for, LH2 LB1 RT1, U_EXTRA)
-ZMK_COMBO(here, &here, RH2 RB1, U_EXTRA)
-ZMK_COMBO(the, &the, RH2 RB1 LM1, U_EXTRA)
-ZMK_COMBO(ment, &ment, RH2 RM0, U_EXTRA)
-ZMK_COMBO(ing, &ing, LM0 RM1 RM3, U_EXTRA)
-ZMK_COMBO(ough, &ough, RH2 RT2, U_EXTRA)
-ZMK_COMBO(ion, &ion, RH2 RB3, U_EXTRA)
-ZMK_COMBO(that, &that, RH2 LM1 RM4, U_EXTRA)
-ZMK_COMBO(qui, &qui, RH2 LB4 RB1, U_EXTRA)
-ZMK_COMBO(key, &key, RH2 RB1 LB0, U_EXTRA)
-ZMK_COMBO(this, &this, RH2 RB1 LM1 LM2, U_EXTRA)
-ZMK_COMBO(dont, &dont, RH2 RB1 LB1, U_EXTRA)
-ZMK_COMBO(in_the, &in_the, RH2 RM3 LM1, U_EXTRA)
-ZMK_COMBO(hv, &hv, RB1 LB2, U_EXTRA)
-ZMK_COMBO(qmk, &qmk, LB4 LB0, U_EXTRA)
-ZMK_COMBO(keyboard, &keyboard, LB0 LT0, U_EXTRA)
-ZMK_COMBO(what, &what, LT4 LM1 RM4, U_EXTRA)
-
+ZMK_COMBO(ip,  &ip, LH2 LT2 RM4, U_BASE)
+ZMK_COMBO(ep,  &ep, LH2 LT2 RM3, U_BASE)
+ZMK_COMBO(iw,  &iw, LH2 LT1 RM4, U_BASE)
+ZMK_COMBO(ew,  &ew, LH2 LT1 RM3, U_BASE)
+ZMK_COMBO(i,   &i, RH2 RM4, U_BASE)
+ZMK_COMBO(sen, &sc_dot, RH2 RB2, U_BASE)
