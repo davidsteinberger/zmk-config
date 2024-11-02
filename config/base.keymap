@@ -47,6 +47,10 @@ ZMK_BEHAVIOR(sc_dot, macro,
     bindings = <&dot_gt &sl U_SEN>;
 )
 
+ZMK_BEHAVIOR(sc_dot_space_shift, macro,
+  bindings = <&kp DOT &kp SPACE &sk LSHFT>;
+)
+
 ZMK_BEHAVIOR(sc_space_shift, macro,
   bindings = <&kp SPACE &sk LSHFT>;
 )
@@ -102,8 +106,8 @@ ZMK_BEHAVIOR(swapper, tri_state,
     ignored-key-positions = <LB1 LB2 LB3 LM1 RM1>;
 )
 
-ZMK_BEHAVIOR(updir, macro,
-    bindings = <&kp DOT &kp DOT &kp SLASH>;
+ZMK_BEHAVIOR(dot_space, macro,
+    bindings = <&kp DOT &kp SPACE>;
 )
 
 ZMK_BEHAVIOR(ip, macro,
@@ -132,104 +136,23 @@ ZMK_BEHAVIOR(ctrlalt, macro,
     , <&macro_release &kp LCTRL &kp LALT>;
 )
 
-ZMK_BEHAVIOR(every, macro,
-    bindings = <&kp E &kp V &kp E &kp R &kp Y>;
-)
-
-ZMK_BEHAVIOR(you, macro,
-    bindings = <&kp Y &kp O &kp U>;
-)
-
-ZMK_BEHAVIOR(and, macro,
-    bindings = <&kp A &kp N &kp D>;
-)
-
-ZMK_BEHAVIOR(for, macro,
-    bindings = <&kp F &kp O &kp R>;
-)
-
-ZMK_BEHAVIOR(here, macro,
-    bindings = <&kp H &kp E &kp R &kp E>;
-)
-
-ZMK_BEHAVIOR(the, macro,
-    bindings = <&kp T &kp H &kp E>;
-)
-
-ZMK_BEHAVIOR(ment, macro,
-    bindings = <&kp M &kp E &kp N &kp T>;
-)
-
-ZMK_BEHAVIOR(ing, macro,
-    bindings = <&kp I &kp N &kp G>;
-)
-
-ZMK_BEHAVIOR(ough, macro,
-    bindings = <&kp O &kp U &kp G &kp H>;
-)
-
 ZMK_BEHAVIOR(i, macro,
     bindings = <&kp LS(I)>;
 )
 
-ZMK_BEHAVIOR(ion, macro,
-    bindings = <&kp I &kp O &kp N>;
-)
-
-ZMK_BEHAVIOR(that, macro,
-    bindings = <&kp T &kp H &kp A &kp T>;
-)
-
-ZMK_BEHAVIOR(qui, macro,
-    bindings = <&kp Q &kp U &kp I>;
-)
-
-ZMK_BEHAVIOR(key, macro,
-    bindings = <&kp K &kp E &kp Y>;
-)
-
-ZMK_BEHAVIOR(this, macro,
-    bindings = <&kp T &kp H &kp I &kp S>;
-)
-
-ZMK_BEHAVIOR(dont, macro,
-    bindings = <&kp D &kp O &kp N &kp SQT &kp T>;
-)
-
-ZMK_BEHAVIOR(in_the, macro,
-    bindings = <&kp I &kp N &kp SPACE &kp T &kp H &kp E>;
-)
-
-ZMK_BEHAVIOR(hv, macro,
-    bindings = <&kp H &kp A &kp V &kp E>;
-)
-
-ZMK_BEHAVIOR(qmk, macro,
-    bindings = <&kp Q &kp M &kp K>;
-)
-
-ZMK_BEHAVIOR(keyboard, macro,
-    bindings = <&kp K &kp E &kp Y &kp B &kp O &kp A &kp R &kp D>;
-)
-
-ZMK_BEHAVIOR(what, macro,
-    bindings = <&kp W &kp H &kp A &kp T>;
-)
-
 // all layers
 ZMK_COMBO(enter, &kp ENTER, LM1 LM2 LM3, U_BASE U_EXTRA)
-ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_EXTRA U_SEN)
-//ZMK_COMBO(esc2,  &kp ESC, LH1 RM4, U_BASE U_EXTRA)
-ZMK_COMBO(grave, &tg, RB0 RB1, U_BASE U_EXTRA)
-ZMK_COMBO(equal, &kp EQUAL, RB2 RB3, U_BASE U_EXTRA)
-ZMK_COMBO(gt, &kp GT, RB1 RB3, U_BASE U_EXTRA)
-ZMK_COMBO(lt, &kp LT, RB1 RB4, U_BASE U_EXTRA)
-ZMK_COMBO(updir, &updir, RB1 RB2 RB3, U_BASE U_EXTRA)
+ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_SEN)
+ZMK_COMBO(grave, &tg, RB0 RB1, U_BASE)
+ZMK_COMBO(equal, &kp EQUAL, RB2 RB3, U_BASE)
+ZMK_COMBO(gt, &kp GT, RB1 RB3, U_BASE)
+ZMK_COMBO(lt, &kp LT, RB1 RB4, U_BASE)
 ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_EXTRA)
 
 // base layer
-ZMK_COMBO(cv_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
-ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE)
+ZMK_COMBO(mc_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
+ZMK_COMBO(pdot_comma_qmark1, &comma_qmark, RB1 RB2, U_BASE U_SEN)
+ZMK_COMBO(dot_space, &kp DOT, RH2 RB2, U_BASE U_SEN)
 ZMK_COMBO(ip,  &ip, LH2 LT2 RM4, U_BASE)
 ZMK_COMBO(ep,  &ep, LH2 LT2 RM3, U_BASE)
 ZMK_COMBO(iw,  &iw, LH2 LT1 RM4, U_BASE)
