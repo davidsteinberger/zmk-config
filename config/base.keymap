@@ -143,6 +143,7 @@ ZMK_BEHAVIOR(i, macro,
 // all layers
 ZMK_COMBO(enter, &kp ENTER, LM1 LM2 LM3, U_BASE U_EXTRA)
 ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_SEN)
+ZMK_COMBO(esc1,  &kp ESC, LB2 LB1, U_BASE U_SEN)
 ZMK_COMBO(grave, &tg, RB0 RB1, U_BASE)
 ZMK_COMBO(equal, &kp EQUAL, RB2 RB3, U_BASE)
 ZMK_COMBO(gt, &kp GT, RB1 RB3, U_BASE)
