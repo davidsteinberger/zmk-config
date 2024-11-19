@@ -141,7 +141,7 @@ ZMK_BEHAVIOR(i, macro,
 )
 
 // all layers
-ZMK_COMBO(enter, &kp ENTER, LM1 LM2 LM3, U_BASE U_EXTRA)
+ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_EXTRA)
 ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_SEN)
 ZMK_COMBO(esc1,  &kp ESC, LB2 LB1, U_BASE U_SEN)
 ZMK_COMBO(grave, &tg, RB0 RB1, U_BASE)
@@ -158,5 +158,5 @@ ZMK_COMBO(ip,  &ip, LH2 LT2 RM4, U_BASE)
 ZMK_COMBO(ep,  &ep, LH2 LT2 RM3, U_BASE)
 ZMK_COMBO(iw,  &iw, LH2 LT1 RM4, U_BASE)
 ZMK_COMBO(ew,  &ew, LH2 LT1 RM3, U_BASE)
-ZMK_COMBO(i,   &i, RH2 RM4, U_BASE)
+ZMK_COMBO(i,   &i, RH2 RB4, U_BASE)
 ZMK_COMBO(sen, &sc_dot, RH2 RB2, U_BASE)
