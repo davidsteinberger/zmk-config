@@ -1,0 +1,13 @@
+// Copyright 2021 Manna Harbour
+// https://github.com/manna-harbour/miryoku
+
+#include "../miryoku/custom_config.h"
+#include "../miryoku/mapping/34/ferris.h"
+#include "../miryoku/miryoku.dtsi"
+
+#include "zmk-helpers/key-labels/34.h"
+
+#define LH2 30
+#define RH2 33
+
+#include "miryoku.keymap"

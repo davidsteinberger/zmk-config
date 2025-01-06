@@ -1,0 +1,164 @@
+#include "zmk-helpers/helper.h"
+
+// workaround for shifted rgb functions not working in zmk
+// see https://github.com/manna-harbour/miryoku_zmk?tab=readme-ov-file#global-shift-functions
+ZMK_COMBO(rgb_brd, &rgb_ug RGB_BRD, LM1 RT3, U_MEDIA)
+ZMK_COMBO(rgb_sai, &rgb_ug RGB_SAD, LM1 RT2, U_MEDIA)
+
+#undef COMBO_TERM
+#define COMBO_TERM 100
+
+ZMK_BEHAVIOR(apos_under, mod_morph, 
+  bindings = <&kp APOS>, <&kp UNDER>;
+  mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+ZMK_BEHAVIOR(comma_qmark, mod_morph, 
+  bindings = <&kp COMMA>, <&kp QMARK>;
+  mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+ZMK_BEHAVIOR(dot_gt, mod_morph, 
+  bindings = <&kp DOT>, <&kp GT>;
+  mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+ZMK_BEHAVIOR(minus_dqt, mod_morph, 
+  bindings = <&kp MINUS>, <&kp DQT>;
+  mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+ZMK_BEHAVIOR(slash_lt, mod_morph, 
+  bindings = <&kp SLASH>, <&kp LT>;
+  mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
+ZMK_BEHAVIOR(ht_minus_dqt, hold_tap,
+  bindings = <&kp>, <&minus_dqt>;
+  tapping-term-ms = <200>;
+)
+
+ZMK_BEHAVIOR(skq, sticky_key,
+  bindings = <&kp>;
+  release-after-ms = <300>;
+  quick-release;
+  ignore-modifiers;
+)
+
+ZMK_BEHAVIOR(sc_dot, macro,
+    bindings = <&dot_gt &sl U_SEN>;
+)
+
+ZMK_BEHAVIOR(sc_dot_space_shift, macro,
+  bindings = <&kp DOT &kp SPACE &sk LSHFT>;
+)
+
+ZMK_BEHAVIOR(sc_space_shift, macro,
+  bindings = <&kp SPACE &sk LSHFT>;
+)
+
+ZMK_BEHAVIOR(sc_mo_space_shift, hold_tap,
+  tapping-term-ms = <135>;
+  quick-tap-ms = <0>;
+  flavor = "tap-preferred";
+  bindings = <&mo>, <&sc_space_shift>;
+)
+
+ZMK_BEHAVIOR(shifted, macro_one_param,
+  bindings =
+    <&macro_press &kp LSHFT>,
+    <&macro_param_1to1 &macro_tap &kp MACRO_PLACEHOLDER>,
+    <&macro_release &kp LSHFT>;
+)
+ZMK_BEHAVIOR(as_ht, hold_tap,
+  tapping-term-ms = <300>;
+  quick-tap-ms = <0>;
+  flavor = "tap-preferred";
+  bindings = <&shifted>, <&kp>;
+)
+
+ZMK_BEHAVIOR(as, macro_one_param,
+  bindings =
+      <&macro_press>,
+      <&macro_param_1to1>,
+      <&macro_param_1to2>,
+      <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
+      <&macro_pause_for_release>,
+      <&macro_release>,
+      <&macro_param_1to1>,
+      <&macro_param_1to2>,
+      <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+)
+
+ZMK_BEHAVIOR(tripple_grave, macro,
+  bindings = 
+    <&macro_release &kp LSHFT>,
+    <&macro_tap &kp GRAVE &kp GRAVE &kp GRAVE>;
+)
+
+ZMK_BEHAVIOR(tg, mod_morph,
+  bindings = <&kp GRAVE>, <&tripple_grave>;
+  mods = <(MOD_LSFT)>;
+)
+
+// Alt+Tab swapper, requires PR #1366
+ZMK_BEHAVIOR(swapper, tri_state,
+    bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+    timeout-ms = <500>;
+    ignored-key-positions = <LB1 LB2 LB3 LM1 RM1>;
+)
+
+ZMK_BEHAVIOR(dot_space, macro,
+    bindings = <&kp DOT &kp SPACE>;
+)
+
+ZMK_BEHAVIOR(ip, macro,
+    bindings = <&sk LSHFT &kp D &kp A &kp V &kp I &kp D &kp SPACE &sk LSHFT &kp S &kp T &kp E &kp I &kp N &kp B &kp E &kp R &kp G &kp E &kp R>;
+)
+
+ZMK_BEHAVIOR(ep, macro,
+    bindings = <&kp M &kp A &kp I &kp L &kp DOT &kp S &kp T &kp E &kp I &kp N &kp B &kp E &kp R &kp G &kp E &kp R &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+)
+
+ZMK_BEHAVIOR(iw, macro,
+    bindings = <&kp KP_N1 &kp KP_N0 &kp KP_N5 &kp KP_N0 &kp KP_N4 &kp KP_N2 &kp KP_N6 &kp KP_N9 &kp KP_N7>;
+)
+
+ZMK_BEHAVIOR(ew, macro,
+    bindings = < &kp D &kp A &kp V &kp I &kp D &kp DOT &kp S &kp T &kp E &kp I &kp N &kp B &kp E &kp R &kp G &kp E &kp R &kp AT &kp I &kp N &kp N &kp I &kp O &kp DOT &kp C &kp O &kp M>;
+)
+
+ZMK_BEHAVIOR(tmux, macro,
+    bindings = <&sk RCTRL &kp SPACE>;
+)
+
+ZMK_BEHAVIOR(ctrlalt, macro,
+    bindings = <&macro_press &kp LCTRL &kp LALT>
+    , <&macro_pause_for_release>
+    , <&macro_release &kp LCTRL &kp LALT>;
+)
+
+ZMK_BEHAVIOR(i, macro,
+    bindings = <&kp LS(I)>;
+)
+
+// all layers
+ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_EXTRA)
+ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_SEN)
+ZMK_COMBO(esc1,  &kp ESC, LB2 LB1, U_BASE U_SEN)
+ZMK_COMBO(grave, &tg, RB0 RB1, U_BASE)
+ZMK_COMBO(equal, &kp EQUAL, RB2 RB3, U_BASE)
+ZMK_COMBO(gt, &kp GT, RB1 RB3, U_BASE)
+ZMK_COMBO(lt, &kp LT, RB1 RB4, U_BASE)
+ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_EXTRA)
+
+// base layer
+ZMK_COMBO(mc_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
+ZMK_COMBO(pdot_comma_qmark1, &comma_qmark, RB1 RB2, U_BASE U_SEN)
+ZMK_COMBO(dot_space, &kp DOT, RH2 RB2, U_BASE U_SEN)
+ZMK_COMBO(ip,  &ip, LH2 LT2 RM4, U_BASE)
+ZMK_COMBO(ep,  &ep, LH2 LT2 RM3, U_BASE)
+ZMK_COMBO(iw,  &iw, LH2 LT1 RM4, U_BASE)
+ZMK_COMBO(ew,  &ew, LH2 LT1 RM3, U_BASE)
+ZMK_COMBO(i,   &i, RH2 RB4, U_BASE)
+ZMK_COMBO(sen, &sc_dot, RH2 RB2, U_BASE)
