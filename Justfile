@@ -84,22 +84,23 @@ clean-nix:
 draw:
     #!/usr/bin/env bash
     set -euo pipefail
-    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" >"{{ draw }}/base.yaml"
+    keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/base.keymap" --virtual-layers Combos >"{{ draw }}/base.yaml"
+    yq -Yi '.combos.[].l = ["Combos"]' "{{ draw }}/base.yaml"
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" -k "ferris/sweep" >"{{ draw }}/base.svg"
 
 # initialize west
 init:
     west init -l config
-    west update
+    west update --fetch-opt=--filter=blob:none
     west zephyr-export
 
 # list build targets
 list:
-    @just _parse_targets all | sed 's/,$//' | sort | column
+    @just _parse_targets all | sed 's/,*$//' | sort | column
 
 # update west
 update:
-    west update
+    west update --fetch-opt=--filter=blob:none
 
 # upgrade zephyr-sdk and python dependencies
 upgrade-sdk:
