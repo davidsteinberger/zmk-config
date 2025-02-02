@@ -29,12 +29,13 @@ ZMK_BEHAVIOR(minus_dqt, mod_morph,
 )
 
 ZMK_BEHAVIOR(slash_lt, mod_morph, 
-  bindings = <&kp SLASH>, <&kp LT>;
+  bindings = <&as_ht LT SLASH>, <&kp LT>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 ZMK_BEHAVIOR(ht_minus_dqt, hold_tap,
   bindings = <&kp>, <&minus_dqt>;
+  flavor = "tap-preferred";
   tapping-term-ms = <200>;
 )
 
@@ -45,12 +46,18 @@ ZMK_BEHAVIOR(skq, sticky_key,
   ignore-modifiers;
 )
 
-ZMK_BEHAVIOR(sc_dot, macro,
+ZMK_BEHAVIOR(sc_dot_macro, macro,
     bindings = <&dot_gt &sl U_SEN>;
 )
 
-ZMK_BEHAVIOR(sc_dot_space_shift, macro,
-  bindings = <&kp DOT &kp SPACE &sk LSHFT>;
+ZMK_BEHAVIOR(gt, macro,
+    bindings = <&kp GT>;
+)
+
+ZMK_BEHAVIOR(sc_dot, hold_tap,
+  bindings = <&gt>, <&sc_dot_macro>;
+  flavor = "tap-preferred";
+  tapping-term-ms = <200>;
 )
 
 ZMK_BEHAVIOR(sc_space_shift, macro,
@@ -93,12 +100,13 @@ ZMK_BEHAVIOR(as, macro_one_param,
 ZMK_BEHAVIOR(tripple_grave, macro,
   bindings = 
     <&macro_release &kp LSHFT>,
+    <&macro_release &kp LALT>,
     <&macro_tap &kp GRAVE &kp GRAVE &kp GRAVE>;
 )
 
 ZMK_BEHAVIOR(tg, mod_morph,
-  bindings = <&kp GRAVE>, <&tripple_grave>;
-  mods = <(MOD_LSFT)>;
+  bindings = <&gresc>, <&tripple_grave>;
+  mods = <(MOD_LALT)>;
 )
 
 // Alt+Tab swapper, requires PR #1366
@@ -142,23 +150,53 @@ ZMK_BEHAVIOR(i, macro,
     bindings = <&kp LS(I)>;
 )
 
+ZMK_BEHAVIOR(equal_left, macro,
+    bindings = <&kp LT &kp EQUAL>;
+)
+ZMK_BEHAVIOR(equal_right, macro,
+    bindings = <&kp EQUAL &kp GT>;
+)
+ZMK_BEHAVIOR(par_brc, macro,
+    bindings = <&macro_release &kp LSHFT>
+    , <&macro_release &kp LALT>
+    , <&macro_tap &kp LPAR &kp LBRC &kp RBRC &kp RPAR &kp LEFT &kp LEFT>;
+)
+ZMK_BEHAVIOR(brc, macro,
+    bindings = <&macro_release &kp LSHFT>
+    , <&macro_release &kp LALT>
+    , <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
+)
+ZMK_BEHAVIOR(bkt, macro,
+    bindings = <&macro_release &kp LSHFT>
+    , <&macro_release &kp LALT>
+    , <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
+)
+ZMK_BEHAVIOR(s_brc_bkt, mod_morph,
+    bindings = <&brc>, <&bkt>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+ZMK_BEHAVIOR(a_brc_bkt, mod_morph,
+    bindings = <&s_brc_bkt>, <&par_brc>;
+    mods = <(MOD_LALT)>;
+)
+
 // all layers
-ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_EXTRA)
-ZMK_COMBO(esc,  &kp ESC, LB3 LB2, U_BASE U_SEN)
-ZMK_COMBO(esc1,  &kp ESC, LB2 LB1, U_BASE U_SEN)
-ZMK_COMBO(grave, &tg, RB0 RB1, U_BASE)
-ZMK_COMBO(equal, &kp EQUAL, RB2 RB3, U_BASE)
-ZMK_COMBO(gt, &kp GT, RB1 RB3, U_BASE)
-ZMK_COMBO(lt, &kp LT, RB1 RB4, U_BASE)
-ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_EXTRA)
+ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_EXTRA U_SEN)
+ZMK_COMBO(esc,  &tg, LB2 LB1, U_BASE U_EXTRA U_SEN)
+ZMK_COMBO(equals, &kp EQUAL, RB0 RB1, U_BASE U_EXTRA U_SEN)
+ZMK_COMBO(lpar, &kp LPAR, LB2 LB3, U_BASE U_EXTRA U_SEN, 300)
+ZMK_COMBO(rpar, &kp RPAR, RB2 RB3, U_BASE U_EXTRA U_SEN, 300)
+ZMK_COMBO(s_brc_bkt, &a_brc_bkt, LB1 LB0, U_BASE U_EXTRA U_SEN)
+ZMK_COMBO(gt, &equal_right, RB1 RB3, U_BASE U_EXTRA U_SEN, 300)
+ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_EXTRA U_SEN, 300)
+//ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_EXTRA U_SEN)
 
 // base layer
 ZMK_COMBO(mc_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
-ZMK_COMBO(pdot_comma_qmark1, &comma_qmark, RB1 RB2, U_BASE U_SEN)
-ZMK_COMBO(dot_space, &kp DOT, RH2 RB2, U_BASE U_SEN)
-ZMK_COMBO(ip,  &ip, LH2 LT2 RM4, U_BASE)
-ZMK_COMBO(ep,  &ep, LH2 LT2 RM3, U_BASE)
-ZMK_COMBO(iw,  &iw, LH2 LT1 RM4, U_BASE)
-ZMK_COMBO(ew,  &ew, LH2 LT1 RM3, U_BASE)
-ZMK_COMBO(i,   &i, RH2 RB4, U_BASE)
-ZMK_COMBO(sen, &sc_dot, RH2 RB2, U_BASE)
+ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_SEN)
+ZMK_COMBO(dot_space, &dot_space, RH2 RB2, U_BASE U_SEN)
+ZMK_COMBO(ip, &ip, LH2 LT2 RM4, U_BASE)
+ZMK_COMBO(ep, &ep, LH2 LT2 RM3, U_BASE)
+ZMK_COMBO(iw, &iw, LH2 LT1 RM4, U_BASE)
+ZMK_COMBO(ew, &ew, LH2 LT1 RM3, U_BASE)
+ZMK_COMBO(i,  &i, RH2 RB4, U_BASE)

@@ -4,7 +4,7 @@
 #define MIRYOKU_NAV_VI
 #define MIRYOKU_CLIPBOARD_MAC
 #define MIRYOKU_KLUDGE_MOUSEKEYSPR
-#define MIRYOKU_KLUDGE_TAPDELAY
+// #define MIRYOKU_KLUDGE_TAPDELAY
 
 #define MIRYOKU_LAYER_LIST \
 MIRYOKU_X(BASE,   "Base") \
@@ -36,6 +36,7 @@ MIRYOKU_X(SEN,    "Sen")
 #define AS(keycode) &as keycode
 #define SC_SPACE_SHIFT &sc_mo_space_shift U_NAV 0
 #define RALT_MINUS_DQT &ht_minus_dqt RALT 0
+#define SC_DOT &sc_dot 0 0
 
 #define MIRYOKU_LAYER_MOUSE \
 U_BOOT,            &u_to_U_TAP,       &u_to_U_EXTRA,     &u_to_U_BASE,      U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,  \
@@ -46,7 +47,7 @@ U_NP,              U_NP,              U_NA,              U_NA,              U_NA
 #define MIRYOKU_LAYER_BASE \
 &kp B,             &kp L,             &kp D,             &kp W,             &kp Z,             &apos_under,             &kp F,             &kp O,             &kp U,             &kp J,     \
 U_MT(LGUI, N),     U_MT(LALT, R),     U_MT(LCTL, T),    U_MT(LSHFT, S),    &kp G,             &kp Y,             U_MT(LSHFT, H),    U_MT(LCTL, A),    U_MT(LALT, E),     U_MT(LGUI, I), \
-U_LT(U_BUTTON, Q), U_MT(RALT, X),     &kp M,             &kp C,             &kp V,             &kp K,             &kp P,             &sc_dot,         RALT_MINUS_DQT,   &slash_lt ,   \
+U_LT(U_BUTTON, Q), U_MT(RALT, X),     &kp M,             &kp C,             &kp V,             &kp K,             &kp P,             SC_DOT,         RALT_MINUS_DQT,   &slash_lt ,   \
 U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
 
 #define MIRYOKU_LAYER_SEN \
@@ -54,3 +55,4 @@ U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT
 &trans,            &trans,            &trans,            &trans,         &trans,            &trans,            &trans,            &trans,            &trans,            &trans, \
 &trans,            &trans,            &trans,            &trans,         &trans,            &trans,            &trans,            &trans,            &trans,            &trans, \
 U_NP,              U_NP,              U_NP,              SC_SPACE_SHIFT, &trans,            &trans,            &trans,            U_NP,              U_NP,              U_NP
+
