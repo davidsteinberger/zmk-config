@@ -9,17 +9,17 @@ ZMK_COMBO(rgb_sai, &rgb_ug RGB_SAD, LM1 RT2, U_MEDIA)
 #define COMBO_TERM 100
 
 ZMK_BEHAVIOR(apos_under, mod_morph, 
-  bindings = <&kp APOS>, <&kp UNDER>;
+  bindings = <&as_ht UNDER APOS>, <&kp UNDER>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 ZMK_BEHAVIOR(comma_qmark, mod_morph, 
-  bindings = <&kp COMMA>, <&kp QMARK>;
+  bindings = <&as_ht QMARK COMMA>, <&kp QMARK>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 ZMK_BEHAVIOR(dot_gt, mod_morph, 
-  bindings = <&kp DOT>, <&kp GT>;
+  bindings = <&as_ht GT DOT>, <&kp GT>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
@@ -192,7 +192,7 @@ ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_EXTRA U_SEN, 300)
 //ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_EXTRA U_SEN)
 
 // base layer
-ZMK_COMBO(mc_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
+//ZMK_COMBO(mc_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
 ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_SEN)
 ZMK_COMBO(dot_space, &dot_space, RH2 RB2, U_BASE U_SEN)
 ZMK_COMBO(ip, &ip, LH2 LT2 RM4, U_BASE)
