@@ -46,29 +46,8 @@ ZMK_BEHAVIOR(skq, sticky_key,
   ignore-modifiers;
 )
 
-ZMK_BEHAVIOR(sc_dot_macro, macro,
-    bindings = <&dot_gt &sl U_SEN>;
-)
-
 ZMK_BEHAVIOR(gt, macro,
     bindings = <&kp GT>;
-)
-
-ZMK_BEHAVIOR(sc_dot, hold_tap,
-  bindings = <&gt>, <&sc_dot_macro>;
-  flavor = "tap-preferred";
-  tapping-term-ms = <200>;
-)
-
-ZMK_BEHAVIOR(sc_space_shift, macro,
-  bindings = <&kp SPACE &sk LSHFT>;
-)
-
-ZMK_BEHAVIOR(sc_mo_space_shift, hold_tap,
-  tapping-term-ms = <135>;
-  quick-tap-ms = <0>;
-  flavor = "tap-preferred";
-  bindings = <&mo>, <&sc_space_shift>;
 )
 
 ZMK_BEHAVIOR(shifted, macro_one_param,
@@ -77,6 +56,7 @@ ZMK_BEHAVIOR(shifted, macro_one_param,
     <&macro_param_1to1 &macro_tap &kp MACRO_PLACEHOLDER>,
     <&macro_release &kp LSHFT>;
 )
+
 ZMK_BEHAVIOR(as_ht, hold_tap,
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
@@ -180,23 +160,47 @@ ZMK_BEHAVIOR(a_brc_bkt, mod_morph,
     mods = <(MOD_LALT)>;
 )
 
+ZMK_BEHAVIOR(mouse_tab, hold_tap,
+  tapping-term-ms = <200>;
+  quick-tap-ms = <0>;
+  flavor = "tap-preferred";
+  bindings = <&mo>, <&kp>;
+)
+
+ZMK_ADAPTIVE_KEY(
+  ak_tab,
+  bindings = <&mouse_tab U_MOUSE TAB>;
+  eu { trigger-keys = <E>; max-prior-idle-ms = <300>; bindings = <&kp U>; };
+  ue { trigger-keys = <U>; max-prior-idle-ms = <300>; bindings = <&kp E>; };
+  rl { trigger-keys = <R>; max-prior-idle-ms = <300>; bindings = <&kp L>; };
+  ld { trigger-keys = <L>; max-prior-idle-ms = <300>; bindings = <&kp D>; };
+  sc { trigger-keys = <S>; max-prior-idle-ms = <500>; bindings = <&kp C &kp H>; };
+  ion { trigger-keys = <I>; max-prior-idle-ms = <300>; bindings = <&kp O &kp N>; };
+  ph { trigger-keys = <P>; max-prior-idle-ms = <300>; bindings = <&kp H>; };
+)
+
+ZMK_ADAPTIVE_KEY(
+  ak_sc,
+  bindings = <&mouse_tab U_NAV SPACE>;
+  dot_sc { trigger-keys = <DOT>; max-prior-idle-ms = <300>; bindings = <&kp SPACE &sk LSHFT>; };
+)
+
 // all layers
-ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_EXTRA U_SEN)
-ZMK_COMBO(esc,  &tg, LB2 LB1, U_BASE U_EXTRA U_SEN)
-ZMK_COMBO(equals, &kp EQUAL, RB0 RB1, U_BASE U_EXTRA U_SEN)
-ZMK_COMBO(lpar, &kp LPAR, LB2 LB3, U_BASE U_EXTRA U_SEN, 300)
-ZMK_COMBO(rpar, &kp RPAR, RB2 RB3, U_BASE U_EXTRA U_SEN, 300)
-ZMK_COMBO(s_brc_bkt, &a_brc_bkt, LB1 LB0, U_BASE U_EXTRA U_SEN)
-ZMK_COMBO(gt, &equal_right, RB1 RB3, U_BASE U_EXTRA U_SEN, 300)
-ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_EXTRA U_SEN, 300)
-//ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_EXTRA U_SEN)
+ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_ALT U_EXTRA)
+ZMK_COMBO(esc,  &tg, LB2 LB1, U_BASE U_ALT U_EXTRA)
+ZMK_COMBO(equals, &kp EQUAL, RB0 RB1, U_BASE U_ALT U_EXTRA)
+ZMK_COMBO(lpar, &kp LPAR, LB2 LB3, U_BASE U_ALT U_EXTRA, 300)
+ZMK_COMBO(rpar, &kp RPAR, RB2 RB3, U_BASE U_ALT U_EXTRA, 300)
+ZMK_COMBO(s_brc_bkt, &a_brc_bkt, LB1 LB0, U_BASE U_ALT U_EXTRA)
+ZMK_COMBO(gt, &equal_right, RB1 RB3, U_BASE U_ALT U_EXTRA, 300)
+ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_ALT U_EXTRA, 300)
+//ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_ALT U_EXTRA )
 
 // base layer
-//ZMK_COMBO(mc_comma_qmark, &comma_qmark, LB1 LB2, U_BASE)
-ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_SEN)
-ZMK_COMBO(dot_space, &dot_space, RH2 RB2, U_BASE U_SEN)
-ZMK_COMBO(ip, &ip, LH2 LT2 RM4, U_BASE)
-ZMK_COMBO(ep, &ep, LH2 LT2 RM3, U_BASE)
-ZMK_COMBO(iw, &iw, LH2 LT1 RM4, U_BASE)
-ZMK_COMBO(ew, &ew, LH2 LT1 RM3, U_BASE)
-ZMK_COMBO(i,  &i, RH2 RB4, U_BASE)
+ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_ALT )
+ZMK_COMBO(dot_space, &dot_space, RH2 RB2, U_BASE U_ALT )
+ZMK_COMBO(ip, &ip, LH2 LT2 RM4, U_BASE U_ALT)
+ZMK_COMBO(ep, &ep, LH2 LT2 RM3, U_BASE U_ALT)
+ZMK_COMBO(iw, &iw, LH2 LT1 RM4, U_BASE U_ALT)
+ZMK_COMBO(ew, &ew, LH2 LT1 RM3, U_BASE U_ALT)
+ZMK_COMBO(i,  &i, RH2 RB4, U_BASE U_ALT)
