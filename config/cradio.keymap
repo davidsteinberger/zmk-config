@@ -3,11 +3,32 @@
 
 #include "../miryoku/custom_config.h"
 #include "../miryoku/mapping/34/ferris.h"
+
+#undef MIRYOKU_KLUDGE_THUMBCOMBOS_LEFT
+#undef MIRYOKU_KLUDGE_THUMBCOMBOS_RIGHT
+#undef MIRYOKU_KLUDGE_THUMBCOMBOS
+
 #include "../miryoku/miryoku.dtsi"
 
+#include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/34.h"
 
-#define LH2 30
-#define RH2 33
-
 #include "miryoku.keymap"
+
+ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_ALT )
+ZMK_COMBO(dot_space, &dot_space, RH1 RB2, U_BASE U_ALT )
+ZMK_COMBO(ip, &ip, LH1 LT2 RM4, U_BASE U_ALT)
+ZMK_COMBO(ep, &ep, LH1 LT2 RM3, U_BASE U_ALT)
+ZMK_COMBO(iw, &iw, LH1 LT1 RM4, U_BASE U_ALT)
+ZMK_COMBO(ew, &ew, LH1 LT1 RM3, U_BASE U_ALT)
+ZMK_COMBO(i,  &i, RH1 RB4, U_BASE U_ALT)
+
+ZMK_COMBO(kc_esc, &lt U_MEDIA ESC, LH1 LH0, U_BASE U_EXTRA)
+ZMK_COMBO(kc_dot, &kp DOT, LH1 LH0, U_NUM)
+ZMK_COMBO(kc_lpar, &kp LPAR, LH1 LH0, U_SYM)
+ZMK_COMBO(kc_rpar, &kp K_APP, LH1 LH0, U_FUN)
+
+ZMK_COMBO(kc_del, &lt U_FUN DEL, RH1 RH0, U_BASE U_EXTRA)
+ZMK_COMBO(kc_nav, &kp DEL, RH1 RH0, U_NAV)
+ZMK_COMBO(kc_btn3, U_BTN3, RH1 RH0, U_MOUSE)
+ZMK_COMBO(kc_mute, &kp C_MUTE, RH1 RH0, U_MEDIA)

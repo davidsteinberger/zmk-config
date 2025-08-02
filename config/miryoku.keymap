@@ -1,10 +1,5 @@
 #include "zmk-helpers/helper.h"
 
-// workaround for shifted rgb functions not working in zmk
-// see https://github.com/manna-harbour/miryoku_zmk?tab=readme-ov-file#global-shift-functions
-ZMK_COMBO(rgb_brd, &rgb_ug RGB_BRD, LM1 RT3, U_MEDIA)
-ZMK_COMBO(rgb_sai, &rgb_ug RGB_SAD, LM1 RT2, U_MEDIA)
-
 #undef COMBO_TERM
 #define COMBO_TERM 100
 
@@ -173,7 +168,7 @@ ZMK_ADAPTIVE_KEY(
   eu { trigger-keys = <E>; max-prior-idle-ms = <300>; bindings = <&kp U>; };
   ue { trigger-keys = <U>; max-prior-idle-ms = <300>; bindings = <&kp E>; };
   rl { trigger-keys = <R>; max-prior-idle-ms = <300>; bindings = <&kp L>; };
-  ld { trigger-keys = <L>; max-prior-idle-ms = <300>; bindings = <&kp D>; };
+  /* ld { trigger-keys = <L>; max-prior-idle-ms = <300>; bindings = <&kp D>; }; */
   sc { trigger-keys = <S>; max-prior-idle-ms = <500>; bindings = <&kp C &kp H>; };
   ion { trigger-keys = <I>; max-prior-idle-ms = <300>; bindings = <&kp O &kp N>; };
   ph { trigger-keys = <P>; max-prior-idle-ms = <300>; bindings = <&kp H>; };
@@ -185,7 +180,6 @@ ZMK_ADAPTIVE_KEY(
   dot_sc { trigger-keys = <DOT>; max-prior-idle-ms = <300>; bindings = <&kp SPACE &sk LSHFT>; };
 )
 
-// all layers
 ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(esc,  &tg, LB2 LB1, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(equals, &kp EQUAL, RB0 RB1, U_BASE U_ALT U_EXTRA)
@@ -194,13 +188,4 @@ ZMK_COMBO(rpar, &kp RPAR, RB2 RB3, U_BASE U_ALT U_EXTRA, 300)
 ZMK_COMBO(s_brc_bkt, &a_brc_bkt, LB1 LB0, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(gt, &equal_right, RB1 RB3, U_BASE U_ALT U_EXTRA, 300)
 ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_ALT U_EXTRA, 300)
-//ZMK_COMBO(sw_app, &swapper, LB1 LB2 LB3, U_BASE U_ALT U_EXTRA )
 
-// base layer
-ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_ALT )
-ZMK_COMBO(dot_space, &dot_space, RH2 RB2, U_BASE U_ALT )
-ZMK_COMBO(ip, &ip, LH2 LT2 RM4, U_BASE U_ALT)
-ZMK_COMBO(ep, &ep, LH2 LT2 RM3, U_BASE U_ALT)
-ZMK_COMBO(iw, &iw, LH2 LT1 RM4, U_BASE U_ALT)
-ZMK_COMBO(ew, &ew, LH2 LT1 RM3, U_BASE U_ALT)
-ZMK_COMBO(i,  &i, RH2 RB4, U_BASE U_ALT)

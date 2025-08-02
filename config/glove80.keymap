@@ -5,7 +5,21 @@
 #include "../miryoku/mapping/80/glove80.h"
 #include "../miryoku/miryoku.dtsi"
 
+#include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/glove80.h"
 
 #include "miryoku.keymap"
+
+ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_ALT )
+ZMK_COMBO(dot_space, &dot_space, RH2 RB2, U_BASE U_ALT )
+ZMK_COMBO(ip, &ip, LH2 LT2 RM4, U_BASE U_ALT)
+ZMK_COMBO(ep, &ep, LH2 LT2 RM3, U_BASE U_ALT)
+ZMK_COMBO(iw, &iw, LH2 LT1 RM4, U_BASE U_ALT)
+ZMK_COMBO(ew, &ew, LH2 LT1 RM3, U_BASE U_ALT)
+ZMK_COMBO(i,  &i, RH2 RB4, U_BASE U_ALT)
+
+// workaround for shifted rgb functions not working in zmk
+// see https://github.com/manna-harbour/miryoku_zmk?tab=readme-ov-file#global-shift-functions
+ZMK_COMBO(rgb_brd, &rgb_ug RGB_BRD, LM1 RT3, U_MEDIA)
+ZMK_COMBO(rgb_sai, &rgb_ug RGB_SAD, LM1 RT2, U_MEDIA)
 
