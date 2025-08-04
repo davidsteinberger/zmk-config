@@ -4,17 +4,17 @@
 #define COMBO_TERM 100
 
 ZMK_BEHAVIOR(apos_under, mod_morph, 
-  bindings = <&as_ht UNDER APOS>, <&kp UNDER>;
+  bindings = <&shifted_kp UNDER APOS>, <&kp UNDER>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 ZMK_BEHAVIOR(comma_qmark, mod_morph, 
-  bindings = <&as_ht QMARK COMMA>, <&kp QMARK>;
+  bindings = <&shifted_kp QMARK COMMA>, <&kp QMARK>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
 ZMK_BEHAVIOR(dot_gt, mod_morph, 
-  bindings = <&as_ht GT DOT>, <&kp GT>;
+  bindings = <&shifted_kp GT DOT>, <&kp GT>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
@@ -24,7 +24,7 @@ ZMK_BEHAVIOR(minus_dqt, mod_morph,
 )
 
 ZMK_BEHAVIOR(slash_lt, mod_morph, 
-  bindings = <&as_ht LT SLASH>, <&kp LT>;
+  bindings = <&shifted_kp LT SLASH>, <&kp LT>;
   mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
@@ -52,7 +52,7 @@ ZMK_BEHAVIOR(shifted, macro_one_param,
     <&macro_release &kp LSHFT>;
 )
 
-ZMK_BEHAVIOR(as_ht, hold_tap,
+ZMK_BEHAVIOR(shifted_kp, hold_tap,
   tapping-term-ms = <300>;
   quick-tap-ms = <0>;
   flavor = "tap-preferred";
@@ -64,12 +64,12 @@ ZMK_BEHAVIOR(as, macro_one_param,
       <&macro_press>,
       <&macro_param_1to1>,
       <&macro_param_1to2>,
-      <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
+      <&shifted_kp MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
       <&macro_pause_for_release>,
       <&macro_release>,
       <&macro_param_1to1>,
       <&macro_param_1to2>,
-      <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+      <&shifted_kp MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
 )
 
 ZMK_BEHAVIOR(tripple_grave, macro,
@@ -92,7 +92,7 @@ ZMK_BEHAVIOR(swapper, tri_state,
 )
 
 ZMK_BEHAVIOR(dot_space, macro,
-    bindings = <&kp DOT &kp SPACE>;
+    bindings = <&kp DOT &kp SPACE &sk LSHFT>;
 )
 
 ZMK_BEHAVIOR(ip, macro,
@@ -155,7 +155,7 @@ ZMK_BEHAVIOR(a_brc_bkt, mod_morph,
     mods = <(MOD_LALT)>;
 )
 
-ZMK_BEHAVIOR(mouse_tab, hold_tap,
+ZMK_BEHAVIOR(mo_kp, hold_tap,
   tapping-term-ms = <200>;
   quick-tap-ms = <0>;
   flavor = "tap-preferred";
@@ -164,7 +164,7 @@ ZMK_BEHAVIOR(mouse_tab, hold_tap,
 
 ZMK_ADAPTIVE_KEY(
   ak_tab,
-  bindings = <&mouse_tab U_MOUSE TAB>;
+  bindings = <&mo_kp U_MOUSE TAB>;
   eu { trigger-keys = <E>; max-prior-idle-ms = <300>; bindings = <&kp U>; };
   ue { trigger-keys = <U>; max-prior-idle-ms = <300>; bindings = <&kp E>; };
   rl { trigger-keys = <R>; max-prior-idle-ms = <300>; bindings = <&kp L>; };
@@ -176,11 +176,11 @@ ZMK_ADAPTIVE_KEY(
 
 ZMK_ADAPTIVE_KEY(
   ak_sc,
-  bindings = <&mouse_tab U_NAV SPACE>;
+  bindings = <&mo_kp U_NAV SPACE>;
   dot_sc { trigger-keys = <DOT>; max-prior-idle-ms = <300>; bindings = <&kp SPACE &sk LSHFT>; };
 )
 
-ZMK_COMBO(enter, &kp ENTER, LM0 LM1 LM2, U_BASE U_ALT U_EXTRA)
+ZMK_COMBO(enter, &kp ENTER, LB3 LB2 LB1, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(esc,  &tg, LB2 LB1, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(equals, &kp EQUAL, RB0 RB1, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(lpar, &kp LPAR, LB2 LB3, U_BASE U_ALT U_EXTRA, 300)
