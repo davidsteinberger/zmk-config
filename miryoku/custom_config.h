@@ -1,6 +1,9 @@
 // Copyright 2021 Manna Harbour
 // https://github.com/manna-harbour/miryoku
 
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+
 #define MIRYOKU_NAV_VI
 #define MIRYOKU_CLIPBOARD_MAC
 #define MIRYOKU_KLUDGE_MOUSEKEYSPR
