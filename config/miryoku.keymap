@@ -115,7 +115,7 @@ ZMK_BEHAVIOR(tmux, macro,
     bindings = <&sk RCTRL &kp SPACE>;
 )
 
-ZMK_BEHAVIOR(ctrlalt, macro,
+ZMK_BEHAVIOR(ctrl_alt, macro,
     bindings = <&macro_press &kp LCTRL &kp LALT>
     , <&macro_pause_for_release>
     , <&macro_release &kp LCTRL &kp LALT>;
@@ -146,12 +146,21 @@ ZMK_BEHAVIOR(bkt, macro,
     , <&macro_release &kp LALT>
     , <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
 )
+ZMK_BEHAVIOR(par_open_close, macro,
+    bindings = <&macro_release &kp LSHFT>
+    , <&macro_release &kp LALT>
+    , <&macro_tap &kp LPAR &kp RPAR>;
+)
 ZMK_BEHAVIOR(s_brc_bkt, mod_morph,
     bindings = <&brc>, <&bkt>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 ZMK_BEHAVIOR(a_brc_bkt, mod_morph,
     bindings = <&s_brc_bkt>, <&par_brc>;
+    mods = <(MOD_LALT)>;
+)
+ZMK_BEHAVIOR(a_par_open_close, mod_morph,
+    bindings = <&par_open_close>, <&kp LPAR>;
     mods = <(MOD_LALT)>;
 )
 
@@ -182,9 +191,9 @@ ZMK_ADAPTIVE_KEY(
 
 ZMK_COMBO(enter, &kp ENTER, LB3 LB2 LB1, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(esc,  &tg, LB2 LB1, U_BASE U_ALT U_EXTRA)
-ZMK_COMBO(equals, &kp EQUAL, RB0 RB1, U_BASE U_ALT U_EXTRA)
-ZMK_COMBO(lpar, &kp LPAR, LB2 LB3, U_BASE U_ALT U_EXTRA, 300)
-ZMK_COMBO(rpar, &kp RPAR, RB2 RB3, U_BASE U_ALT U_EXTRA, 300)
+/* ZMK_COMBO(equals, &kp EQUAL, RB0 RB1, U_BASE U_ALT U_EXTRA) */
+ZMK_COMBO(par_open_close, &a_par_open_close, LB2 LB3, U_BASE U_ALT U_EXTRA, 300)
+ZMK_COMBO(semi, &as SEMI, RB2 RB3, U_BASE U_ALT U_EXTRA, 300)
 ZMK_COMBO(s_brc_bkt, &a_brc_bkt, LB1 LB0, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(gt, &equal_right, RB1 RB3, U_BASE U_ALT U_EXTRA, 300)
 ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_ALT U_EXTRA, 300)
