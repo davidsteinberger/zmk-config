@@ -39,6 +39,8 @@ MIRYOKU_X(FUN,    "Fun")
 
 #define AS(keycode) &as keycode
 #define RALT_MINUS_DQT &ht_minus_dqt RALT 0
+#define U_MTL(mod, keycode) &hml mod keycode
+#define U_MTR(mod, keycode) &hmr mod keycode
 
 #define MIRYOKU_LAYER_MOUSE \
 U_BOOT,            &u_to_U_TAP,       &u_to_U_EXTRA,     &u_to_U_BASE,      U_NA,              U_RDO,             U_PST,             U_CPY,             U_CUT,             U_UND,  \
@@ -54,14 +56,14 @@ U_NP,              U_NP,              U_NA,              U_NA,              U_NA
 
 #define MIRYOKU_LAYER_BASE \
 &kp B,             &kp L,             &kp D,             &kp W,             &kp Z,             &apos_under,             &kp F,             &kp O,             &kp U,             &kp J,     \
-U_MT(LGUI, N),     U_MT(LALT, R),     U_MT(LCTL, T),    U_MT(LSHFT, S),    &kp G,             &kp Y,             U_MT(LSHFT, H),    U_MT(LCTL, A),    U_MT(LALT, E),     U_MT(LGUI, I), \
-U_LT(U_BUTTON, Q), U_MT(RALT, X),     &kp M,             &kp C,             &kp V,             &kp K,             &kp P,             &dot_gt,         RALT_MINUS_DQT,   &slash_lt ,   \
+U_MTL(LGUI, N),     U_MTL(LALT, R),     U_MTL(LCTL, T),    U_MTL(LSHFT,S),    &kp G,             &kp Y,             &hmr LSHFT H,    U_MTR(LCTL, A),    U_MTR(LALT, E),     U_MTR(LGUI, I), \
+U_LT(U_BUTTON, Q), U_MTL(RALT, X),     &kp M,             &kp C,             &kp V,             &kp K,             &kp P,             &dot_gt,         RALT_MINUS_DQT,   &slash_lt ,   \
 U_NP,              U_NP,              U_LT(U_MEDIA, ESC),U_LT(U_NAV, SPACE),U_LT(U_MOUSE, TAB),U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
 
 #define MIRYOKU_LAYER_ALT \
 &kp B,             &kp L,             &kp D,             &kp W,             &kp Z,             &apos_under,             &kp F,             &kp O,             &kp U,             &kp J,     \
-U_MT(LGUI, N),     U_MT(LALT, R),     U_MT(LCTL, T),    U_MT(LSHFT, S),    &kp G,             &kp Y,             U_MT(LSHFT, H),    U_MT(LCTL, A),    U_MT(LALT, E),     U_MT(LGUI, I), \
-U_LT(U_BUTTON, Q), U_MT(RALT, X),     &kp M,             &kp C,             &kp V,             &kp K,             &kp P,             &dot_gt,         RALT_MINUS_DQT,   &slash_lt ,   \
+U_MTL(LGUI, N),     U_MTL(LALT, R),     U_MTL(LCTL, T),    U_MTL(LSHFT, S),    &kp G,             &kp Y,             U_MTR(LSHFT, H),    U_MTR(LCTL, A),    U_MTR(LALT, E),     U_MTR(LGUI, I), \
+U_LT(U_BUTTON, Q), U_MTL(RALT, X),     &kp M,             &kp C,             &kp V,             &kp K,             &kp P,             &dot_gt,         RALT_MINUS_DQT,   &slash_lt ,   \
 U_NP,              U_NP,              U_LT(U_MEDIA, ESC),&ak_sc,&ak_tab,U_LT(U_SYM, RET),  U_LT(U_NUM, BSPC), U_LT(U_FUN, DEL),  U_NP,              U_NP
 
 #define MIRYOKU_LAYER_NUM \
