@@ -1,14 +1,14 @@
 // Copyright 2021 Manna Harbour
 // https://github.com/manna-harbour/miryoku
 
-#include "../miryoku/custom_config.h"
-#include "../miryoku/mapping/34/ferris.h"
+#include "./miryoku/custom_config.h"
+#include "./miryoku/mapping/34/ferris.h"
 
 #undef MIRYOKU_KLUDGE_THUMBCOMBOS_LEFT
 #undef MIRYOKU_KLUDGE_THUMBCOMBOS_RIGHT
 #undef MIRYOKU_KLUDGE_THUMBCOMBOS
 
-#include "../miryoku/miryoku.dtsi"
+#include "./miryoku/miryoku.dtsi"
 
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/34.h"

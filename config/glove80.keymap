@@ -1,9 +1,9 @@
 // Copyright 2022 Manna Harbour
 // https://github.com/manna-harbour/miryoku
 
-#include "../miryoku/custom_config.h"
-#include "../miryoku/mapping/80/glove80.h"
-#include "../miryoku/miryoku.dtsi"
+#include "./miryoku/custom_config.h"
+#include "./miryoku/mapping/80/glove80.h"
+#include "./miryoku/miryoku.dtsi"
 
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/glove80.h"
