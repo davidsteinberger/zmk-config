@@ -16,7 +16,7 @@
 #include "miryoku.keymap"
 
 ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_ALT )
-ZMK_COMBO(dot_space, &dot_space, RH1 RB2, U_BASE U_ALT )
+ZMK_COMBO(sk_shift, &sk LSHFT, RH1 RB2, U_BASE U_ALT )
 ZMK_COMBO(ip, &ip, LH1 LT2 RM4, U_BASE U_ALT)
 ZMK_COMBO(ep, &ep, LH1 LT2 RM3, U_BASE U_ALT)
 ZMK_COMBO(iw, &iw, LH1 LT1 RM4, U_BASE U_ALT)

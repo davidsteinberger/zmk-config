@@ -59,6 +59,13 @@ ZMK_BEHAVIOR(shifted_kp, hold_tap,
   bindings = <&shifted>, <&kp>;
 )
 
+ZMK_BEHAVIOR(kp_sticky, hold_tap,
+  tapping-term-ms = <300>;
+  quick-tap-ms = <0>;
+  flavor = "tap-preferred";
+  bindings = <&kp>, <&sk>;
+)
+
 ZMK_BEHAVIOR(as, macro_one_param,
   bindings =
       <&macro_press>,
