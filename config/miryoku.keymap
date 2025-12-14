@@ -66,6 +66,11 @@ ZMK_BEHAVIOR(kp_sticky, hold_tap,
   bindings = <&kp>, <&sk>;
 )
 
+ZMK_BEHAVIOR(copy_paste, tap_dance,
+  tapping-term-ms = <200>;
+  bindings = <U_CPY>, <U_PST>;
+)
+
 ZMK_BEHAVIOR(as, macro_one_param,
   bindings =
       <&macro_press>,
@@ -153,11 +158,6 @@ ZMK_BEHAVIOR(bkt, macro,
     , <&macro_release &kp LALT>
     , <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
 )
-ZMK_BEHAVIOR(par_open_close, macro,
-    bindings = <&macro_release &kp LSHFT>
-    , <&macro_release &kp LALT>
-    , <&macro_tap &kp LPAR &kp RPAR>;
-)
 ZMK_BEHAVIOR(s_brc_bkt, mod_morph,
     bindings = <&brc>, <&bkt>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -166,11 +166,23 @@ ZMK_BEHAVIOR(a_brc_bkt, mod_morph,
     bindings = <&s_brc_bkt>, <&par_brc>;
     mods = <(MOD_LALT)>;
 )
-ZMK_BEHAVIOR(a_par_open_close, mod_morph,
+ZMK_BEHAVIOR(s_par_open_close, mod_morph,
     bindings = <&par_open_close>, <&kp LPAR>;
+    mods = <(MOD_LSFT)>;
+)
+ZMK_BEHAVIOR(a_par_open_close, mod_morph,
+    bindings = <&s_par_open_close>, <&kp RPAR>;
     mods = <(MOD_LALT)>;
 )
-
+ZMK_BEHAVIOR(par_open_close, macro,
+    bindings = <&macro_release &kp LSHFT>
+    , <&macro_release &kp LALT>
+    , <&macro_tap &kp LPAR &kp RPAR>;
+)
+ZMK_BEHAVIOR(s_par_esc, mod_morph,
+    bindings = <&kp LPAR>, <&kp ESC>;
+    mods = <(MOD_LSFT)>;
+)
 ZMK_BEHAVIOR(mo_kp, hold_tap,
   tapping-term-ms = <200>;
   quick-tap-ms = <0>;
