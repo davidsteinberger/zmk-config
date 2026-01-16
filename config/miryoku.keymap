@@ -217,7 +217,7 @@ ZMK_COMBO(s_brc_bkt, &a_brc_bkt, LB1 LB0, U_BASE U_ALT U_EXTRA)
 ZMK_COMBO(gt, &equal_right, RB1 RB3, U_BASE U_ALT U_EXTRA, 300)
 ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_ALT U_EXTRA, 300)
 
-#define QUICK_TAP_MS 175
+#define QUICK_TAP_MS 250
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4
 #ifndef LH2
@@ -227,8 +227,8 @@ ZMK_COMBO(lt, &equal_left, RB1 RB4, U_BASE U_ALT U_EXTRA, 300)
 #endif
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
-               tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;         \
-               require-prior-idle-ms = <50>; hold-trigger-on-release;         \
+               tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
+               require-prior-idle-ms = <25>; hold-trigger-on-release;         \
                hold-trigger-key-positions = <TRIGGER_POS>;)
 
 MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs.
