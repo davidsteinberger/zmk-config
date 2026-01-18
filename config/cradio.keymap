@@ -1,19 +1,22 @@
-// Copyright 2021 Manna Harbour
-// https://github.com/manna-harbour/miryoku
+#pragma once
 
-#include "./miryoku/custom_config.h"
-#include "./miryoku/mapping/34/ferris.h"
+#define ZMK_BASE_LAYER( \
+  name, \
+  K00, K01, K02, K03, K04,    K05, K06, K07, K08, K09, \
+  K10, K11, K12, K13, K14,    K15, K16, K17, K18, K19, \
+  K20, K21, K22, K23, K24,    K25, K26, K27, K28, K29, \
+  K30, K31, K32, K33, K34,    K35, K36, K37, K38, K39  \
+) \
+  ZMK_LAYER( \
+    name, \
+    K00  K01  K02  K03  K04     K05  K06  K07  K08  K09 \
+    K10  K11  K12  K13  K14     K15  K16  K17  K18  K19 \
+    K20  K21  K22  K23  K24     K25  K26  K27  K28  K29 \
+                   K33  K34     K35  K36                \
+)
 
-#undef MIRYOKU_KLUDGE_THUMBCOMBOS_LEFT
-#undef MIRYOKU_KLUDGE_THUMBCOMBOS_RIGHT
-#undef MIRYOKU_KLUDGE_THUMBCOMBOS
-
-#include "./miryoku/miryoku.dtsi"
-
-#include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/34.h"
-
-#include "miryoku.keymap"
+#include "custom.keymap"
 
 ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_ALT )
 ZMK_COMBO(sk_shift, &sk LSHFT, RH1 RB2, U_BASE U_ALT )
@@ -32,3 +35,4 @@ ZMK_COMBO(kc_del, &lt U_FUN DEL, RH1 RH0, U_BASE U_EXTRA)
 ZMK_COMBO(kc_nav, &kp DEL, RH1 RH0, U_NAV)
 ZMK_COMBO(kc_btn3, U_BTN3, RH1 RH0, U_MOUSE)
 ZMK_COMBO(kc_mute, &kp C_MUTE, RH1 RH0, U_MEDIA)
+
