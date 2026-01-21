@@ -62,7 +62,7 @@
 #define COMBO_TERM 100
 
 // HMR definitions
-#define QUICK_TAP_MS 250
+#define QUICK_TAP_MS 175
 #ifndef LM5
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4
 #else
@@ -405,7 +405,7 @@ ZMK_ADAPTIVE_KEY(
 ZMK_ADAPTIVE_KEY(
   ak_sc,
   bindings = <&mo_kp U_NAV SPACE>;
-  dot_sc { trigger-keys = <DOT>; max-prior-idle-ms = <300>; bindings = <&kp SPACE &sk LSHFT>; };
+  dot_sc { trigger-keys = <DOT>; max-prior-idle-ms = <300>; strict-modifiers; bindings = <&kp SPACE &sk LSHFT>; };
 )
 
 ZMK_COMBO(enter, &kp ENTER, LB3 LB2 LB1, U_BASE U_ALT U_EXTRA)
