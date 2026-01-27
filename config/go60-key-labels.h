@@ -67,6 +67,14 @@
 #define RB4 46
 #define RB5 47
 
+#define LF1 48  // left-floor row
+#define LF2 49
+#define LF3 50
+
+#define RF1 51  // right-floor row
+#define RF2 52
+#define RF3 53
+
 #define LH0 56  // left thumb keys
 #define LH1 55
 #define LH2 54
