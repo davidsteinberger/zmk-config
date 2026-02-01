@@ -9,17 +9,24 @@
 ) \
   ZMK_LAYER( \
     name, \
-    &kp BSPC   &kp N1  &kp N2    &kp N3    &kp N4    &kp N5                        &kp N6  &kp N7    &kp N8    &kp N9    &kp N0  &kp BSLH     \
-    &caps_word K00     K01       K02       K03       K04                           K05     K06       K07       K08       K09     &kp EQUAL    \
-    &kp ESC    K10     K11       K12       K13       K14                           K15     K16       K17       K18       K19     &comma_qmark \
-    &kp LSHFT  K20     K21       K22       K23       K24                           K25     K26       K27       K28       K29     &kp RSHFT    \
-                       U_CPY     U_PST     &swapper                                        &kp LGUI  AS(LBKT)  AS(RBKT)       \
-                                                     K33     K34  K32    K37  K35  K36                                                        \
+    &kp BSPC    &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                                  &kp N6    &kp N7    &kp N8    &kp N9    &kp N0  &kp BSLH     \
+    &caps_word  K00     K01     K02     K03     K04                                     K05       K06       K07       K08       K09     &kp EQUAL    \
+    &kp ESC     K10     K11     K12     K13     K14                                     K15       K16       K17       K18       K19     &comma_qmark \
+    &kp LSHFT   K20     K21     K22     K23     K24                                     K25       K26       K27       K28       K29     &kp RSHFT    \
+                        U_CPY   U_NP    U_PST                                           &kp LGUI  AS(LBKT)  AS(RBKT)                       \
+                                                        K33  K34  K32    K37  K35  K36                                                        \
 )
 
 #include "./go60-key-labels.h"
 #include "custom.keymap"
 #include "./go60-cirque.dtsi"
+
+// Alt+Tab swapper, requires PR #1366
+ZMK_BEHAVIOR(swapper, tri_state,
+  bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
+  timeout-ms = <500>;
+  ignored-key-positions = <LF2 LM1 RM1>;
+)
 
 ZMK_COMBO(pdot_comma_qmark, &comma_qmark, RB1 RB2, U_BASE U_ALT )
 ZMK_COMBO(sk_shift, &sk LSHFT, RH2 RB2, U_BASE U_ALT )
@@ -28,6 +35,7 @@ ZMK_COMBO(ep, &ep, LH2 LT2 RM3, U_BASE U_ALT)
 ZMK_COMBO(iw, &iw, LH2 LT1 RM4, U_BASE U_ALT)
 ZMK_COMBO(ew, &ew, LH2 LT1 RM3, U_BASE U_ALT)
 ZMK_COMBO(i,  &i, RH2 RB4, U_BASE U_ALT)
+ZMK_COMBO(sw, &swapper, LF2, U_BASE U_ALT)
 
 // workaround for shifted rgb functions not working in zmk
 // see https://github.com/manna-harbour/miryoku_zmk?tab=readme-ov-file#global-shift-functions

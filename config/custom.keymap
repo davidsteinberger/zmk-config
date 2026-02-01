@@ -312,13 +312,6 @@ ZMK_BEHAVIOR(tg, mod_morph,
   mods = <(MOD_LALT)>;
 )
 
-// Alt+Tab swapper, requires PR #1366
-ZMK_BEHAVIOR(swapper, tri_state,
-  bindings = <&kt LGUI>, <&kp TAB>, <&kt LGUI>;
-  timeout-ms = <500>;
-  ignored-key-positions = <LT1 LT2 LT3 LM1 RM1>;
-)
-
 ZMK_BEHAVIOR(dot_space, macro,
   bindings = <&kp DOT &kp SPACE &sk LSHFT>;
 )

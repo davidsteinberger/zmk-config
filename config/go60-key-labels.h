@@ -67,9 +67,9 @@
 #define RB4 46
 #define RB5 47
 
-#define LF1 48  // left-floor row
+#define LF1 50  // left-floor row
 #define LF2 49
-#define LF3 50
+#define LF3 48
 
 #define RF1 51  // right-floor row
 #define RF2 52
