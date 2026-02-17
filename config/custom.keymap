@@ -307,9 +307,14 @@ ZMK_BEHAVIOR(tripple_grave, macro,
     <&macro_tap &kp GRAVE &kp GRAVE &kp GRAVE>;
 )
 
-ZMK_BEHAVIOR(tg, mod_morph,
+ZMK_BEHAVIOR(tg_inner, mod_morph,
   bindings = <&gresc>, <&tripple_grave>;
   mods = <(MOD_LALT)>;
+)
+
+ZMK_BEHAVIOR(tg, mod_morph,
+  bindings = <&tg_inner>, <&kp LG(ESC)>;
+  mods = <(MOD_LGUI)>;
 )
 
 ZMK_BEHAVIOR(dot_space, macro,
