@@ -32,7 +32,7 @@ manifest:
   projects:
     - name: zmk
       remote: moergo
-      revision: main
+      revision: cherry-pick-zmk-3110
       import: app/west.yml
 
     # ZMK modules
