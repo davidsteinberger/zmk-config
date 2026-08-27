@@ -4,26 +4,39 @@ This is my personal [ZMK firmware](https://github.com/zmkfirmware/zmk/)
 configuration. It consists of a 34-keys base layout that is re-used for various
 boards, including my Corneish Zen and my Planck.
 
-My configuration currently builds against `v0.3` of upstream ZMK.
-Custom functionality is added through various
+My configuration currently builds against `v0.3` of upstream ZMK. Custom
+functionality is added through various
 [ZMK modules](https://github.com/search?q=topic%3Azmk-module+fork%3Atrue+owner%3Aurob+&type=repositories).
 The state of the entire firmware is pinned in my `west`
 [manifest](https://github.com/urob/zmk-config/blob/main/config/west.yml).
 
 ## Highlights
 
+> **Note:** This readme still describes `config/base.keymap`, the original
+> layout. David keeps `base.keymap` (and the Corneish Zen/Planck boards that
+> build it) around as reference material only — it's not in `build.yaml` and
+> isn't what gets flashed. Day-to-day work happens in `config/custom.keymap`
+> (built for Cradio/Glove80/go60), which carries over the homerow-mod and
+> combo-instead-of-symbol-layer design but not the auto-toggle
+> layers/magic-thumb/leader-key items below — see "Smart layers and other
+> gimmicks" for details.
+
 - ["Timeless" homerow mods](#timeless-homerow-mods)
 - Combos instead of symbol layer
-- Auto-toggle off numbers and mouse layers
-- Magic thumb quadrupling as Repeat/Sticky-shift/Capsword/Shift
-- Leader key sequences for Unicode input and system commands
+- Auto-toggle off numbers and mouse layers _(`base.keymap` only, see note
+  above)_
+- Magic thumb quadrupling as Repeat/Sticky-shift/Capsword/Shift _(`base.keymap`
+  only)_
+- Leader key sequences for Unicode input and system commands _(`base.keymap`
+  only)_
 - Arrow-cluster doubles as <kbd>home</kbd>, <kbd>end</kbd>, <kbd>begin/end of
   document</kbd> on long-press
 - Shifted actions that make sense: <kbd>, ↦ ;</kbd>, <kbd>. ↦ :</kbd> and <kbd>?
   ↦ !</kbd>
 - Simpler Devicetree syntax using helper macros from
   [zmk-helpers](https://github.com/urob/zmk-helpers)
-- Fully automated, nix-powered [local build environment](#local-build-environment)
+- Fully automated, nix-powered
+  [local build environment](#local-build-environment)
 
 ![](draw/keymap.png)
 ([Click here](https://raw.githubusercontent.com/urob/zmk-config/refs/heads/main/draw/base.svg)
@@ -171,6 +184,11 @@ while also making them easy to remember. Specifically:
   <kbd>D</kbd>), `copy` and `paste` that go well with right-handed mouse usage
 
 ## Smart layers and other gimmicks
+
+> **Note:** Everything in this section (Numword, Smart-Mouse, Magic
+> Repeat/Shift/Capsword, Swapper, Leader key) is implemented in
+> `config/base.keymap` only. The actively-built `config/custom.keymap`
+> (Cradio/Glove80/go60) does not include any of it.
 
 ##### Numword
 
@@ -372,10 +390,12 @@ version of ZMK and all modules specified in `config/west.yml`. Make sure to
 commit and push all local changes you have made to ZMK and the modules before
 running this command, as this will overwrite them.
 
-To upgrade the Zephyr SDK and Python build dependencies, use `just upgrade-sdk`. (Use with care --
-Running this will upgrade all Nix packages and may end up breaking the build environment. When in
-doubt, I recommend keeping the environment pinned to `flake.lock`, which is [continuously
-tested](https://github.com/urob/zmk-config/actions/workflows/test-build-env.yml) on all systems.)
+To upgrade the Zephyr SDK and Python build dependencies, use `just upgrade-sdk`.
+(Use with care -- Running this will upgrade all Nix packages and may end up
+breaking the build environment. When in doubt, I recommend keeping the
+environment pinned to `flake.lock`, which is
+[continuously tested](https://github.com/urob/zmk-config/actions/workflows/test-build-env.yml)
+on all systems.)
 
 ## Bonus: A (moderately) faster Github Actions Workflow
 

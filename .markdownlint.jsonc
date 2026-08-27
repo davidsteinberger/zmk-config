@@ -1,0 +1,12 @@
+{
+  // Prose isn't hard-wrapped in LLM-facing docs (CLAUDE.md, .claude/skills/**,
+  // .claude/commands/**) — prettier (proseWrap: always) already handles
+  // wrapping for files where that matters.
+  "MD013": false,
+  // Skill/command files use YAML front matter (name/description) instead of
+  // a leading H1. Treat a front-matter `name:` field like `title:` so this
+  // rule doesn't fire on them.
+  "MD041": {
+    "front_matter_title": "^\\s*\"?(title|name)\"?\\s*[:=]"
+  }
+}
